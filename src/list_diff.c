@@ -6,8 +6,8 @@
 #include <sys/stat.h> // For stat() or lstat()
 #include <unistd.h>   // For chdir() or realpath()
 
-const char **find_missing(const char **list1, size_t n1, const char **list2,
-                          size_t n2, size_t *out_count) {
+const char **find_missing(char **list1, size_t n1, char **list2, size_t n2,
+                          size_t *out_count) {
   int counter = 0;
 
   const char **result = malloc(n1 * sizeof(char *));
@@ -27,16 +27,4 @@ const char **find_missing(const char **list1, size_t n1, const char **list2,
   *out_count = count;
 
   return result;
-
-  /*
-  Usage:
-  const char *a[] = {"apple", "banana", "cherry", "date"};
-  const char *b[] = {"banana", "date", "fig"};
-  size_t count;
-  const char **diff = find_missing(a, 4, b, 3, &count);
-  // diff = {"apple", "cherry"}, count = 2
-  free(diff);
-
-  return counter;
-  */
 }

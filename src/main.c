@@ -23,23 +23,26 @@ int main(int argc, char *argv[]) {
 
   const int capacity = 1000000;
   int counter = 0;
-  int filled = 0;
+  int c = 0;
   char *list[capacity];
 
   if (folder_path != "") {
     printf("main %s\n", folder_path);
-    filled = filelist(folder_path, list, capacity, counter);
-    printf("filled  %d\n", filled);
+    c = filelist(folder_path, list, capacity, counter);
+    printf("filled  %d\n", c);
   }
 
-  const char *a[] = {"apple", "banana", "cherry", "date"};
-  const char *b[] = {"banana", "date", "fig"};
+  for (size_t i = 1; i < 10; i++) {
+    // printf("%s\n", list[i]);
+  }
+
+  char *a[] = {"apple", "banana", "cherry", "date"};
+  char *b[] = {"banana", "date", "fig"};
   size_t count;
-  int x = 0;
-  const char **diff = find_missing(a, 4, b, 3, &count);
+  const char **diff = find_missing(list, c, list, c, &count);
   for (size_t i = 0; i < count; i++) {
-    printf("%s\n", diff[i]);
+    // printf("%s\n", diff[i]);
   }
 
-  // x = find_missing(a, 4, b, 3, &count);
+  // http://sapir.salamander-jewelry.net/picture_path/name
 }

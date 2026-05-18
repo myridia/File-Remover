@@ -49,10 +49,10 @@ int filelist(const char *path, char **list, int capacity, int counter) {
     if (S_ISDIR(statbuf.st_mode)) {
       counter = filelist(full_path, list, capacity, counter); // Recursive call
     } else {
-      counter++;
       // printf("%d\n", counter);
       // printf("%s\n", full_path);
       list[counter] = full_path;
+      counter++;
     }
   }
 
