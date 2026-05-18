@@ -22,13 +22,24 @@ int main(int argc, char *argv[]) {
     }
   }
 
+  const int capacity = 1000000;
+  int counter1 = 0;
+  int c1 = 0;
+  char *list1[capacity];
+
+  if (folder_path != "") {
+    printf("main %s\n", folder_path);
+    c1 = filelist(folder_path, list1, capacity, counter1);
+    printf("list1:  %d\n", c1);
+  }
+
   // *******************************************************************
-  // Get the first list
+  // Get list2
 
   const char *url = "http://sapir.salamander-jewelry.net/picture_path/name";
-  size_t counter;
-  const char **list1 = curl_list(url, &counter);
-  printf("list1:  %dx \n", counter);
+  size_t c2;
+  char **list2 = curl_list(url, &c2);
+  printf("list2:  %d \n", c2);
   // for (size_t i = 0; i < counter; i++) {
   //   printf("%s\n", list2[i]);
   //  }
@@ -36,28 +47,18 @@ int main(int argc, char *argv[]) {
   // *******************************************************************
   // Get the second list
 
-  /*
-  const int capacity = 1000000;
-  int counter = 0;
-  int c = 0;
-  char *list[capacity];
+  // *******************************************************************
 
-  if (folder_path != "") {
-    printf("main %s\n", folder_path);
-    c = filelist(folder_path, list, capacity, counter);
-    printf("filled  %d\n", c);
-  }
-
-  for (size_t i = 1; i < 10; i++) {
-    // printf("%s\n", list[i]);
-  }
-
-  char *a[] = {"apple", "banana", "cherry", "date"};
-  char *b[] = {"banana", "date", "fig"};
+  const char *a[] = {"apple", "banana", "cherry", "date"};
+  const char *b[] = {"banana", "date", "fig"};
   size_t count;
-  const char **diff = find_missing(list, c, list, c, &count);
-  for (size_t i = 0; i < count; i++) {
-    // printf("%s\n", diff[i]);
-  }
-  */
+  // const char **diff = find_missing(a, 4, b, 3, &count);
+  const char **diff =
+      find_missing((const char **)list1, c1, (const char **)list2, c2, &count);
+  // printf("diff:  %d\n", count);
+
+  // const char **diff = find_missing(list2, c2, list1, c1, &count);
+  // for (size_t i = 0; i < count; i++) {
+  //  printf("%s\n", diff[i]);
+  //}
 }

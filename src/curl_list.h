@@ -22,6 +22,6 @@ struct MemoryStruct {
   size_t size;
 };
 
-const char **curl_list(const char *url, size_t *counter);
+char **curl_list(const char *url, size_t *counter);
 
 #endif

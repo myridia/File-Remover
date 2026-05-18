@@ -25,10 +25,10 @@ static size_t write_memory_callback(void *contents, size_t size, size_t nmemb,
   return realsize;
 }
 
-const char **curl_list(const char *url, size_t *counter) {
+char **curl_list(const char *url, size_t *counter) {
   printf("%s\n", url);
   size_t count = 0;
-  const char **result = malloc(10000 * sizeof(char *));
+  char **result = malloc(10000 * sizeof(char *));
 
   char *translation = NULL;
 
