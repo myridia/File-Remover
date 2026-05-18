@@ -26,24 +26,27 @@ static size_t write_memory_callback(void *contents, size_t size, size_t nmemb,
 }
 
 const char **curl_list(const char *url, size_t *counter) {
-  const char **result = malloc(1000000 * sizeof(char *));
+  printf("%s\n", url);
+
+  const char **result = malloc(10000 * sizeof(char *));
 
   char *translation = NULL;
 
   CURL *curl;
   CURLcode res;
   struct MemoryStruct chunk;
+
+  struct MemoryStruct chunk;
+  chunk.memory = NULL;
+
+  chunk.size = 0;
   curl = curl_easy_init();
 
   if (curl) {
     curl_easy_setopt(curl, CURLOPT_URL, url);
-
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_memory_callback);
-
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)&chunk);
-
     res = curl_easy_perform(curl);
-
     if (res != CURLE_OK) {
       fprintf(stderr, "curl_easy_perform() failed: %s\n",
               curl_easy_strerror(res));
@@ -58,26 +61,31 @@ const char **curl_list(const char *url, size_t *counter) {
         goto cleanup;
       } else {
 
-        json_t *translated_text = json_object_get(root, "target_value");
+        // json_t *translated_text = json_object_get(root);
+        // size_t len = json_array_size(root);
+        // for (size_t i = 0; i < len; i++) {
+        //  json_t *elem = json_array_get(root, i);
+        //    const char *str = json_string_value(elem);
+        //}
 
+        /*
         if (translated_text) {
           if (json_is_string(translated_text)) {
             const char *translation_str = json_string_value(translated_text);
             translation = strdup(translation_str);
             if (translation == NULL) {
-              fprintf(stderr,
-                      "Error: Could not allocate memory for translation.\n");
+              fprintf(stderr, "Error: not allocate memory.\n");
               goto cleanup_json;
             }
           } else {
-            fprintf(stderr, "Error: 'translated_text' is not a string.\n");
+            fprintf(stderr, "Error: is not a string.\n");
             goto cleanup_json;
           }
         } else {
-          fprintf(stderr, "Error: 'translated_text' field not found.\n");
+          fprintf(stderr, "Error: field not found.\n");
           goto cleanup_json;
         }
-
+        */
       cleanup_json:
         json_decref(root);
       }

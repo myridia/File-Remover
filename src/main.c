@@ -1,3 +1,4 @@
+#include "curl_list.h"
 #include "filelist.h"
 #include "list_diff.h"
 #include <dirent.h>
@@ -21,6 +22,7 @@ int main(int argc, char *argv[]) {
     }
   }
 
+  /*
   const int capacity = 1000000;
   int counter = 0;
   int c = 0;
@@ -43,6 +45,8 @@ int main(int argc, char *argv[]) {
   for (size_t i = 0; i < count; i++) {
     // printf("%s\n", diff[i]);
   }
-
-  // http://sapir.salamander-jewelry.net/picture_path/name
+  */
+  const char *url = "http://sapir.salamander-jewelry.net/picture_path/name";
+  size_t counter;
+  const char **l = curl_list(url, &counter);
 }
