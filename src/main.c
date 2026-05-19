@@ -47,11 +47,7 @@ int main(int argc, char *argv[]) {
 
   /*******************************************************************/
 
-  const char *a[] = {"apple", "banana", "cherry", "date"};
-  const char *b[] = {"banana", "date", "fig"};
   size_t c3;
-  // const char **diff = find_missing(a, 4, b, 3, &count);
-
   const char **diff =
       find_missing((const char **)list1, c1, (const char **)list2, c2, &c3);
 
@@ -59,8 +55,7 @@ int main(int argc, char *argv[]) {
   printf("List2:  %d \n", c2);
   printf("Diff:  %d\n", c3);
 
-  // const char **diff = find_missing(list2, c2, list1, c1, &count);
-  // for (size_t i = 0; i < count; i++) {
-  //  printf("%s\n", diff[i]);
-  //}
+  for (size_t i = 0; i < c3; i++) {
+    printf("%s\n", diff[i]);
+  }
 }

@@ -7,9 +7,6 @@
 #include <unistd.h>
 
 int filelist(const char *path, char **list, int capacity, int counter) {
-
-  // printf("%d\n", counter);
-
   DIR *dir;
   struct dirent *entry;
   struct stat statbuf;
@@ -17,9 +14,9 @@ int filelist(const char *path, char **list, int capacity, int counter) {
 
   dir = opendir(path);
   if (dir == NULL) {
-    perror("Error opening directory"); // Print error message
+    perror("Error opening directory");
     fprintf(stderr, "Failed to open: %s\n", path);
-    return 0; // Exit the function if directory cannot be opened
+    return 0;
   }
 
   while ((entry = readdir(dir)) != NULL) {
@@ -37,10 +34,8 @@ int filelist(const char *path, char **list, int capacity, int counter) {
     }
 
     if (S_ISDIR(statbuf.st_mode)) {
-      counter = filelist(full_path, list, capacity, counter); // Recursive call
+      counter = filelist(full_path, list, capacity, counter);
     } else {
-      // printf("%d\n", counter);
-      // printf("%s\n", full_path);
       list[counter] = strdup(full_path);
       counter++;
     }
