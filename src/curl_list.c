@@ -28,7 +28,7 @@ static size_t write_memory_callback(void *contents, size_t size, size_t nmemb,
 char **curl_list(const char *url, size_t *counter) {
   printf("%s\n", url);
   size_t count = 0;
-  char **result = malloc(100000 * sizeof(char *));
+  char **result = malloc(1000000 * sizeof(char *));
 
   char *translation = NULL;
 

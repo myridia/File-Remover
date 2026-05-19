@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
   }
 
   /********************************************************************/
-  const int capacity = 120000;
+  const int capacity = 1000000;
   int counter1 = 0;
   int c1 = 0;
   // char *list1[capacity];
