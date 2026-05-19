@@ -1,6 +1,7 @@
 #include "curl_list.h"
 #include "filelist.h"
 #include "list_diff.h"
+#include "remove_file.h"
 #include <dirent.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -55,7 +56,7 @@ int main(int argc, char *argv[]) {
   printf("List2:  %d \n", c2);
   printf("Diff:  %d\n", c3);
 
-  for (size_t i = 0; i < c3; i++) {
+  for (size_t i = 0; i < 10; i++) {
     printf("%s\n", diff[i]);
   }
 }
