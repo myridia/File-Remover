@@ -11,14 +11,20 @@
 
 int main(int argc, char *argv[]) {
   char *folder_path = "";
+  char *url = "";
+
   printf("... start main fun \n");
 
   for (int i = 0; i < argc; i++) {
-    if (strncmp(argv[i], "-p", 2) == 0) {
-      // printf("  %b\n", strncmp(argv[i], base, 2));
+    if (strncmp(argv[i], "-f", 2) == 0) {
       if (argv[i + 1]) {
-        // folder_path = sanitize_string(argv[i + 1]);
         folder_path = argv[i + 1];
+      }
+    }
+
+    if (strncmp(argv[i], "-u", 2) == 0) {
+      if (argv[i + 1]) {
+        url = argv[i + 1];
       }
     }
   }
@@ -41,7 +47,7 @@ int main(int argc, char *argv[]) {
 
   /*******************************************************************/
 
-  const char *url = "http://sapir.salamander-jewelry.net/picture_path/name";
+  // const char *url = "http://sapir.salamander-jewelry.net/picture_path/name";
   size_t c2;
   char **list2 = curl_list(url, &c2);
   // printf("List2:  %d \n", c2);
@@ -56,9 +62,9 @@ int main(int argc, char *argv[]) {
   printf("List2:  %d \n", c2);
   printf("Diff:  %d\n", c3);
 
-  for (size_t i = 0; i < 10; i++) {
-    // int ok = remove_file(diff[i]);
+  for (size_t i = 0; i < c3; i++) {
+    int ok = remove_file(diff[i]);
 
-    printf("%s\n", diff[i]);
+    // printf("%s\n", diff[i]);
   }
 }
