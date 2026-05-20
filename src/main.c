@@ -58,7 +58,7 @@ int main(int argc, char *argv[]) {
   const char **diff =
       find_missing((const char **)list1, c1, (const char **)list2, c2, &c3);
 
-  printf("List1:  %zu \n", c1);
+  printf("List1:  %d \n", c1);
   printf("List2:  %zu  \n", c2);
   printf("Diff:  %zu \n", c3);
 
